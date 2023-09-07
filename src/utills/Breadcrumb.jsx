@@ -28,8 +28,8 @@ const Breadcrumb = () => {
               </div>
 
               {(currentRoute === `/` || currentRoute === `/post/${params.id}`) && (
-                <Link to="/post/add" replace={true} className="btn btn-outline-dark rounded rounded-circle" title="add post">
-                  <i className="bi bi-plus-circle-fill large-icon p-0"></i>
+                <Link to="/post/add" replace={true} className="btn btn-outline-dark rounded rounded-circle d-flex justify-content-center align-items-center" title="add post" style={{ width: "50px", height: "50px" }}>
+                  <i className="bi bi-plus-circle-fill" style={{ fontSize: "24px" }}></i>
                 </Link>
               )}
             </nav>
