@@ -81,179 +81,175 @@ const AddUpdatePost = () => {
       {isLoading ? (
         <Spinner />
       ) : (
-        <section className="container-fluid gradient-custom" style={{ paddingTop: "8rem" }}>
-          <div className="container">
-            <div className="row py-4 position-relative d-flex justify-content-center align-items-center">
-              <div className="col-12  col-md-10 ">
-                <div className="card card-color shadow shadow-lg text-dark card-border" style={{ borderRadius: "1rem" }}>
-                  <div className="card-body px-4 px-sm-5 text-center">
-                    <div className="mb-md-4 mt-md-4">
-                      <h4 className="fw-bold mb-2 text-uppercase">{paramsId ? "Edit Post" : "Add Post"}</h4>
-                      <p className="text-dark-50 mb-5">Please {paramsId ? "update" : "enter"} title and body!</p>
-                      <form noValidate onSubmit={handleSubmit(onSubmit)}>
-                        <div className="row">
-                          <div className="col-12 col-sm-6">
-                            <div className="mb-2">
-                              <label className="form-label" htmlFor={id + "-title"}>
-                                Full Name
-                              </label>
-                              <input
-                                {...register("fullName", {
-                                  required: "full name is required!",
-                                })}
-                                type="text"
-                                id={id + "-fullName"}
-                                defaultValue={paramsId ? post.fullName : ""}
-                                className="bg-transparent text-dark form-control form-control-md"
-                              />
-                              {errors.fullName ? (
-                                <span role="alert" className="text-danger">
-                                  {errors.fullName.message}
-                                </span>
-                              ) : (
-                                <span>&nbsp;</span>
-                              )}
-                            </div>
-                          </div>
-
-                          <div className="col-12 col-sm-6">
-                            <div className="mb-2">
-                              <label className="form-label" htmlFor={id + "-email"}>
-                                Email
-                              </label>
-                              <input
-                                {...register("email", {
-                                  required: "email is required!",
-                                  pattern: { value: /\b[\w\.-]+@[\w\.-]+\.\w{2,4}\b/gi, message: "invalid email address!" },
-                                })}
-                                type="email"
-                                id={id + "-email"}
-                                defaultValue={paramsId ? post.email : ""}
-                                className="bg-transparent text-dark form-control form-control-md"
-                              />
-                              {errors.email ? (
-                                <span role="alert" className="text-danger">
-                                  {errors.email.message}
-                                </span>
-                              ) : (
-                                <span>&nbsp;</span>
-                              )}
-                            </div>
-                          </div>
+        <div className="row py-4 d-flex justify-content-center align-items-center">
+          <div className="col-12  col-md-10 ">
+            <div className="card card-color shadow shadow-lg text-dark card-border" style={{ borderRadius: "1rem" }}>
+              <div className="card-body px-4 px-sm-5 text-center">
+                <div className="mb-md-4 mt-md-4">
+                  <h4 className="fw-bold mb-2 text-uppercase">{paramsId ? "Edit Post" : "Add Post"}</h4>
+                  <p className="text-dark-50 mb-5">Please {paramsId ? "update" : "enter"} title and body!</p>
+                  <form noValidate onSubmit={handleSubmit(onSubmit)}>
+                    <div className="row">
+                      <div className="col-12 col-sm-6">
+                        <div className="mb-2">
+                          <label className="form-label" htmlFor={id + "-title"}>
+                            Full Name
+                          </label>
+                          <input
+                            {...register("fullName", {
+                              required: "full name is required!",
+                            })}
+                            type="text"
+                            id={id + "-fullName"}
+                            defaultValue={paramsId ? post.fullName : ""}
+                            className="bg-transparent text-dark form-control form-control-md"
+                          />
+                          {errors.fullName ? (
+                            <span role="alert" className="text-danger">
+                              {errors.fullName.message}
+                            </span>
+                          ) : (
+                            <span>&nbsp;</span>
+                          )}
                         </div>
-                        <div className="row">
-                          <div className="col-12 col-sm-6">
-                            <div className="mb-2">
-                              <label className="form-label" htmlFor={id + "-phone"}>
-                                Phone
-                              </label>
-                              <input
-                                {...register("phone", {
-                                  required: "phone is required!",
-                                })}
-                                type="text"
-                                id={id + "-phone"}
-                                defaultValue={paramsId ? post.phone : ""}
-                                className="bg-transparent text-dark form-control form-control-md"
-                              />
-                              {errors.phone ? (
-                                <span role="alert" className="text-danger">
-                                  {errors.phone.message}
-                                </span>
-                              ) : (
-                                <span>&nbsp;</span>
-                              )}
-                            </div>
-                          </div>
-                          <div className="col-12 col-sm-6">
-                            <div className="mb-2">
-                              <label className="form-label" htmlFor={id + "-gender"}>
-                                Gender
-                              </label>
-                              <select
-                                className="bg-transparent text-dark form-select"
-                                {...register("gender", { required: "select gender!" })}
-                                value={post.gender}
-                                onChange={(e) => {
-                                  setPost({ ...post, gender: e.target.value });
-                                }}>
-                                <option value="" disabled>
-                                  --select gender--
-                                </option>
-                                <option value="male">male</option>
-                                <option value="female">female</option>
-                              </select>
-                              {errors.gender ? (
-                                <span role="alert" className="text-danger">
-                                  {errors.gender.message}
-                                </span>
-                              ) : (
-                                <span>&nbsp;</span>
-                              )}
-                            </div>
-                          </div>
-                        </div>
+                      </div>
 
-                        <div className="row">
-                          <div className="col-12 col-sm-6">
-                            <div className="mb-2">
-                              <label className="form-label" htmlFor={id + "-title"}>
-                                Title
-                              </label>
-                              <input
-                                {...register("postTitle", {
-                                  required: "title is required!",
-                                })}
-                                type="text"
-                                id={id + "-title"}
-                                defaultValue={paramsId ? post.postTitle : ""}
-                                className="bg-transparent text-dark form-control form-control-md"
-                              />
-                              {errors.postTitle ? (
-                                <span role="alert" className="text-danger">
-                                  {errors.postTitle.message}
-                                </span>
-                              ) : (
-                                <span>&nbsp;</span>
-                              )}
-                            </div>
-                          </div>
-                          <div className="col-12 col-sm-6">
-                            <div className="mb-2">
-                              <label className="form-label" htmlFor={id + "-description"}>
-                                Description
-                              </label>
-                              <textarea
-                                {...register("postDescription", {
-                                  required: "description is required",
-                                })}
-                                type="text"
-                                id={id + "-description"}
-                                defaultValue={paramsId ? post.postDescription : ""}
-                                className="bg-transparent text-dark form-control form-control-md"
-                              />
-                              {errors.postDescription ? (
-                                <span role="alert" className="text-danger">
-                                  {errors.postDescription.message}
-                                </span>
-                              ) : (
-                                <span>&nbsp;</span>
-                              )}
-                            </div>
-                          </div>
+                      <div className="col-12 col-sm-6">
+                        <div className="mb-2">
+                          <label className="form-label" htmlFor={id + "-email"}>
+                            Email
+                          </label>
+                          <input
+                            {...register("email", {
+                              required: "email is required!",
+                              pattern: { value: /\b[\w\.-]+@[\w\.-]+\.\w{2,4}\b/gi, message: "invalid email address!" },
+                            })}
+                            type="email"
+                            id={id + "-email"}
+                            defaultValue={paramsId ? post.email : ""}
+                            className="bg-transparent text-dark form-control form-control-md"
+                          />
+                          {errors.email ? (
+                            <span role="alert" className="text-danger">
+                              {errors.email.message}
+                            </span>
+                          ) : (
+                            <span>&nbsp;</span>
+                          )}
                         </div>
-
-                        <button className="btn btn-outline-dark btn-md px-5 fw-bold" type="submit">
-                          {paramsId ? "Update" : "Add"}
-                        </button>
-                      </form>
+                      </div>
                     </div>
-                  </div>
+                    <div className="row">
+                      <div className="col-12 col-sm-6">
+                        <div className="mb-2">
+                          <label className="form-label" htmlFor={id + "-phone"}>
+                            Phone
+                          </label>
+                          <input
+                            {...register("phone", {
+                              required: "phone is required!",
+                            })}
+                            type="text"
+                            id={id + "-phone"}
+                            defaultValue={paramsId ? post.phone : ""}
+                            className="bg-transparent text-dark form-control form-control-md"
+                          />
+                          {errors.phone ? (
+                            <span role="alert" className="text-danger">
+                              {errors.phone.message}
+                            </span>
+                          ) : (
+                            <span>&nbsp;</span>
+                          )}
+                        </div>
+                      </div>
+                      <div className="col-12 col-sm-6">
+                        <div className="mb-2">
+                          <label className="form-label" htmlFor={id + "-gender"}>
+                            Gender
+                          </label>
+                          <select
+                            className="bg-transparent text-dark form-select"
+                            {...register("gender", { required: "select gender!" })}
+                            value={post.gender}
+                            onChange={(e) => {
+                              setPost({ ...post, gender: e.target.value });
+                            }}>
+                            <option value="" disabled>
+                              --select gender--
+                            </option>
+                            <option value="male">male</option>
+                            <option value="female">female</option>
+                          </select>
+                          {errors.gender ? (
+                            <span role="alert" className="text-danger">
+                              {errors.gender.message}
+                            </span>
+                          ) : (
+                            <span>&nbsp;</span>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="row">
+                      <div className="col-12 col-sm-6">
+                        <div className="mb-2">
+                          <label className="form-label" htmlFor={id + "-title"}>
+                            Title
+                          </label>
+                          <input
+                            {...register("postTitle", {
+                              required: "title is required!",
+                            })}
+                            type="text"
+                            id={id + "-title"}
+                            defaultValue={paramsId ? post.postTitle : ""}
+                            className="bg-transparent text-dark form-control form-control-md"
+                          />
+                          {errors.postTitle ? (
+                            <span role="alert" className="text-danger">
+                              {errors.postTitle.message}
+                            </span>
+                          ) : (
+                            <span>&nbsp;</span>
+                          )}
+                        </div>
+                      </div>
+                      <div className="col-12 col-sm-6">
+                        <div className="mb-2">
+                          <label className="form-label" htmlFor={id + "-description"}>
+                            Description
+                          </label>
+                          <textarea
+                            {...register("postDescription", {
+                              required: "description is required",
+                            })}
+                            type="text"
+                            id={id + "-description"}
+                            defaultValue={paramsId ? post.postDescription : ""}
+                            className="bg-transparent text-dark form-control form-control-md"
+                          />
+                          {errors.postDescription ? (
+                            <span role="alert" className="text-danger">
+                              {errors.postDescription.message}
+                            </span>
+                          ) : (
+                            <span>&nbsp;</span>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+
+                    <button className="btn btn-outline-dark btn-md px-5 fw-bold" type="submit">
+                      {paramsId ? "Update" : "Add"}
+                    </button>
+                  </form>
                 </div>
               </div>
             </div>
           </div>
-        </section>
+        </div>
       )}
     </>
   );

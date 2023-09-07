@@ -7,13 +7,16 @@ const Breadcrumb = () => {
   const params = useParams();
   const location = useLocation();
   const currentRoute = location.pathname;
+  const style = {
+    padding: `${currentRoute === `/` || currentRoute === `/post/${params.id}` ? "0.5rem 0rem" : "1.1rem 0rem"}`,
+  };
 
   return (
     <div className="container-fluid bg-white">
       <div className="container">
         <div className="row">
           <div className="col-12">
-            <nav className="breadcrumb  d-flex justify-content-between align-items-center">
+            <nav className="breadcrumb  d-flex justify-content-between align-items-center" style={style}>
               <div>
                 <Link className="go-back text-dark opacity-75 text-decoration-none fw-bold px-2" onClick={() => navigate(-1)}>
                   <i className="bi bi-caret-left-fill" aria-hidden="true"></i>Go Back

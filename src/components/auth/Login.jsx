@@ -34,15 +34,15 @@ const Login = () => {
   };
 
   return (
-    <section className="container-fluid gradient-custom login-back-img">
+    <section className="container-fluid login-back-img">
       <div className="container">
         <div className="row d-flex justify-content-center" style={{ minHeight: "100vh" }}>
           <div className="col-12 col-md-8 col-lg-6 col-xl-5 my-auto">
             <div className="card card-color shadow shadow-md text-dark card-border" style={{ borderRadius: "1rem" }}>
-              <div className="card-body py-3 px-5 text-center">
+              <div className="card-body py-3 px-4 px-sm-5 text-center">
                 <div className="mb-md-5 mt-md-4">
                   <h2 className="fw-bold mb-2 text-uppercase">Login</h2>
-                  <p className="text-dark-50 mb-5">Please enter your email and password!</p>
+                  <p className="text-dark-50 mb-5 ">Please enter your email and password!</p>
                   <form noValidate onSubmit={handleSubmit(onSubmit)}>
                     <div className="mb-4">
                       <label className="form-label" htmlFor={id + "-username"}>
@@ -100,14 +100,14 @@ const Login = () => {
                       Login
                     </button>
                   </form>
-                  <div className="d-flex justify-content-center text-center mt-4 pt-1">
+                  <div className="d-flex justify-content-center text-center my-3">
                     <a href="https://www.facebook.com/" target="_blank" className="text-dark">
                       <i className="bi bi-facebook large-icon"></i>
                     </a>
                     <a href="https://twitter.com/" target="_blank" className="text-dark">
                       <i className="bi bi-twitter large-icon mx-4 px-2"></i>
                     </a>
-                    <a href="https://www.instagram.com/" target="_blank" className="text-dark">
+                    <a href="https://www.google.com/" target="_blank" className="text-dark">
                       <i className="bi bi-google large-icon"></i>
                     </a>
                   </div>
