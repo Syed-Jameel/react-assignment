@@ -55,7 +55,6 @@
 .breadcrumb {
   display: flex;
   flex-wrap: wrap;
-  /* padding: 0.5rem 0rem; */
   margin-bottom: 0rem;
   list-style: none;
   background-color: white;
@@ -66,27 +65,21 @@
   display: flex;
 }
 
-.breadcrumb-item+.breadcrumb-item {
-  padding-left: 0.5rem;
-}
-
-.breadcrumb-item+.breadcrumb-item::before {
-  display: inline-block;
-  padding-right: 0.5rem;
-  color: #6c757d;
-  content: "/";
-}
-
-.breadcrumb-item+.breadcrumb-item:hover::before {
-  text-decoration: underline;
-}
-
-.breadcrumb-item+.breadcrumb-item:hover::before {
+.breadcrumb-item a {
+  color: gray !important;
+  font-weight: 500;
   text-decoration: none;
 }
 
-.breadcrumb-item.active {
-  color: #6c757d;
+.breadcrumb-item a:hover {
+  opacity: 0.7;
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.breadcrumb-item .active  {
+  color: #051937 !important;
+  font-weight: 700 !important;
 }
 
 /* breadcrumb style end*/
@@ -122,9 +115,13 @@
   height: 3.5rem;
 }
 
+.add-btn:hover {
+  color: gray !important;
+}
+
 @media screen and (max-width : 768px) {
   html {
-    font-size: 80%;
+    font-size: 90%;
   }
 
   .profile-section {

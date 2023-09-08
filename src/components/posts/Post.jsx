@@ -23,7 +23,7 @@ const Post = () => {
                 <div className="col-md-4 pb-3 profile-section text-center text-white custom-border-radius">
                   <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-profiles/avatar-1.webp" alt="Avatar" className="img-fluid avatar my-4 rounded rounded-circle " style={{ width: 100 }} />
 
-                  <h5>{post.fullName}</h5>
+                  <h5>{post?.fullName}</h5>
                   <p className="text-secondary">Web Developer</p>
                   <div>
                     <i className="bi bi-pencil text-secondary large-icon" title="edit profile"></i>
@@ -36,23 +36,23 @@ const Post = () => {
                     <div className="row pt-1">
                       <div className="col-12 col-sm-4 mb-3">
                         <h6 className="d-inline d-sm-block">Email</h6>
-                        <p className="text-muted d-inline d-sm-block ps-2 ps-sm-0">{post.email}</p>
+                        <p className="text-muted d-inline d-sm-block ps-2 ps-sm-0">{post?.email}</p>
                       </div>
                       <div className="col-12 col-sm-4 mb-3">
                         <h6 className="d-inline d-sm-block">Phone</h6>
-                        <p className="text-muted d-inline d-sm-block ps-2 ps-sm-0">{post.phone}</p>
+                        <p className="text-muted d-inline d-sm-block ps-2 ps-sm-0">{post?.phone}</p>
                       </div>
                       <div className="col-12 col-sm-4 mb-3">
                         <h6 className="d-inline d-sm-block">Gender</h6>
-                        <p className="text-muted d-inline d-sm-block ps-2 ps-sm-0">{post.gender}</p>
+                        <p className="text-muted d-inline d-sm-block ps-2 ps-sm-0">{post?.gender}</p>
                       </div>
                     </div>
                     <h5>Post</h5>
                     <hr className="mt-0 mb-4" />
                     <div className="row pt-1">
                       <div className="col-12 mb-3">
-                        <h6>{post.postTitle}</h6>
-                        <p className="text-secondary">{post.postDescription}</p>
+                        <h6>{post?.postTitle}</h6>
+                        <p className="text-secondary">{post?.postDescription}</p>
                       </div>
                     </div>
                     <div className="d-flex justify-content-between align-items-center">
@@ -69,7 +69,7 @@ const Post = () => {
                       </div>
 
                       <div>
-                        <Link to={`/post/edit/${params.id}`} replace={true}>
+                        <Link to={`/post/edit/${params?.id}`} replace={true}>
                           <i className="bi bi-pencil-square text-warning large-icon" title="edit post"></i>
                         </Link>
                       </div>

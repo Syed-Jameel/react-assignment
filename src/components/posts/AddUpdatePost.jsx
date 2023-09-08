@@ -87,15 +87,16 @@ const AddUpdatePost = () => {
               <div className="card-body px-4 px-sm-5 text-center">
                 <div className="mb-md-4 mt-md-4">
                   <h4 className="fw-bold mb-2 text-uppercase">{paramsId ? "Edit Post" : "Add Post"}</h4>
-                  <p className="text-dark-50 mb-5">Please {paramsId ? "update" : "enter"} title and body!</p>
+                  <p className="text-dark-50 mb-5">Please {paramsId ? "update" : "enter"} details!</p>
                   <form noValidate onSubmit={handleSubmit(onSubmit)}>
                     <div className="row">
-                      <div className="col-12 col-sm-6">
-                        <div className="mb-2">
+                      <div className="col-12 col-sm-6 ">
+                        <div className="mb-2 text-start">
                           <label className="form-label" htmlFor={id + "-title"}>
                             Full Name
                           </label>
                           <input
+                            placeholder="Enter full name"
                             {...register("fullName", {
                               required: "full name is required!",
                             })}
@@ -115,11 +116,12 @@ const AddUpdatePost = () => {
                       </div>
 
                       <div className="col-12 col-sm-6">
-                        <div className="mb-2">
+                        <div className="mb-2 text-start">
                           <label className="form-label" htmlFor={id + "-email"}>
                             Email
                           </label>
                           <input
+                            placeholder="Enter email"
                             {...register("email", {
                               required: "email is required!",
                               pattern: { value: /\b[\w\.-]+@[\w\.-]+\.\w{2,4}\b/gi, message: "invalid email address!" },
@@ -141,11 +143,12 @@ const AddUpdatePost = () => {
                     </div>
                     <div className="row">
                       <div className="col-12 col-sm-6">
-                        <div className="mb-2">
+                        <div className="mb-2 text-start">
                           <label className="form-label" htmlFor={id + "-phone"}>
                             Phone
                           </label>
                           <input
+                            placeholder="Enter phone"
                             {...register("phone", {
                               required: "phone is required!",
                             })}
@@ -164,7 +167,7 @@ const AddUpdatePost = () => {
                         </div>
                       </div>
                       <div className="col-12 col-sm-6">
-                        <div className="mb-2">
+                        <div className="mb-2 text-start">
                           <label className="form-label" htmlFor={id + "-gender"}>
                             Gender
                           </label>
@@ -194,11 +197,12 @@ const AddUpdatePost = () => {
 
                     <div className="row">
                       <div className="col-12 col-sm-6">
-                        <div className="mb-2">
+                        <div className="mb-2 text-start">
                           <label className="form-label" htmlFor={id + "-title"}>
                             Title
                           </label>
                           <input
+                            placeholder="Enter post title"
                             {...register("postTitle", {
                               required: "title is required!",
                             })}
@@ -217,11 +221,12 @@ const AddUpdatePost = () => {
                         </div>
                       </div>
                       <div className="col-12 col-sm-6">
-                        <div className="mb-2">
+                        <div className="mb-2 text-start">
                           <label className="form-label" htmlFor={id + "-description"}>
                             Description
                           </label>
                           <textarea
+                            placeholder="Enter post description"
                             {...register("postDescription", {
                               required: "description is required",
                             })}

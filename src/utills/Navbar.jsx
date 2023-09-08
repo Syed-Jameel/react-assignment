@@ -21,7 +21,7 @@ const Navbar = () => {
           <img src={logo} alt="logo" width={70} height={40} className="d-inline-block align-text-center" />
         </Link>
         <div>
-          <span className="text-white fw-bolder mx-2">{user.username}</span>
+          <span className="text-white fw-bolder mx-2">{user?.username}</span>
           <button className="btn btn-outline-light fw-bold ms-2" onClick={handleLogout}>
             Logout
           </button>
