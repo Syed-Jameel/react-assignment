@@ -1,16 +1,18 @@
-import React, { useEffect, useId } from "react";
+import React, { useEffect, useId, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 const Login = () => {
+  const [passwordVisible, setPasswordVisible] = useState(false);
   const id = useId();
   const {
+    watch,
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-
+  const password = watch("password"); // Get the password value from the form
   const navigate = useNavigate();
 
   const Auth = localStorage.getItem("user");
@@ -19,6 +21,10 @@ const Login = () => {
       navigate("/");
     }
   }, []);
+
+  const togglePasswordVisibility = () => {
+    setPasswordVisible(!passwordVisible);
+  };
 
   const onSubmit = (user) => {
     const username = user.username.trim();
@@ -53,7 +59,8 @@ const Login = () => {
                           required: "username is required!",
                           minLength: { value: 5, message: "username must be at least 5 characters long!" },
                         })}
-                        type="username"
+                        type="text"
+                        placeholder="Enter your username"
                         id={id + "-username"}
                         className="bg-transparent text-dark form-control form-control-md"
                       />
@@ -69,20 +76,22 @@ const Login = () => {
                       <label className="form-label" htmlFor={id + "-password"}>
                         Password
                       </label>
-                      <input
-                        {...register("password", {
-                          required: "password is required!",
-                          // pattern: {
-                          //   value: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/gm,
-                          //   message: `- at least 8 characters\n
-                          //             - must contain at least 1 uppercase letter, 1 lowercase letter, and 1 number\n
-                          //             - Can contain special characters`,
-                          // },
-                        })}
-                        type="password"
-                        id={id + "-password"}
-                        className="bg-transparent text-dark form-control form-control-md"
-                      />
+                      <div className="input-group">
+                        <input
+                          {...register("password", {
+                            required: "password is required!",
+                          })}
+                          type={passwordVisible ? "text" : "password"}
+                          placeholder="Enter your password"
+                          id={id + "-password"}
+                          className="bg-transparent text-dark form-control form-control-md"
+                        />
+                        {password && (
+                          <span className="input-group-text">
+                            <i className={`bi ${passwordVisible ? "bi-eye-slash-fill" : "bi-eye-fill"}`} onClick={togglePasswordVisibility} style={{ cursor: "pointer" }}></i>
+                          </span>
+                        )}
+                      </div>
                       {errors.password ? (
                         <span role="alert" className="text-danger">
                           {errors.password.message}
@@ -130,3 +139,10 @@ const Login = () => {
 };
 
 export default Login;
+
+// pattern: {
+//   value: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/gm,
+//   message: `- at least 8 characters\n
+//             - must contain at least 1 uppercase letter, 1 lowercase letter, and 1 number\n
+//             - Can contain special characters`,
+// },

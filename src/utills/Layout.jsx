@@ -12,7 +12,7 @@ const Layout = ({ children }) => {
         </div>
       </header>
 
-      <section className="container-fluid gradient-custom ">
+      <section className="container-fluid gradient-custom">
         <div className="container">{children}</div>
       </section>
     </div>
