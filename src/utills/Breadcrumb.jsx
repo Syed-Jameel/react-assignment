@@ -22,6 +22,7 @@ const Breadcrumb = () => {
                     Home
                   </NavLink>
                 </li>
+
                 {!params.id && (
                   <li className="breadcrumb-item">
                     <NavLink to="/post/add" activeclassname="active">
@@ -30,7 +31,15 @@ const Breadcrumb = () => {
                   </li>
                 )}
 
-                {params.id && (
+                {currentRoute === `/post/${params.id}` && (
+                  <li className="breadcrumb-item ">
+                    <NavLink to={`/post/${params.id}`} activeclassname="active">
+                      Post
+                    </NavLink>
+                  </li>
+                )}
+
+                {currentRoute === `/post/edit/${params.id}` && (
                   <li className="breadcrumb-item ">
                     <NavLink to={`/post/edit/${params.id}`} activeclassname="active">
                       EditPost

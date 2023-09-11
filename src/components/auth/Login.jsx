@@ -2,6 +2,8 @@ import React, { useEffect, useId, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { validationSchema } from "../../utills/validation";
+import CustomInputField from "../../utills/CustomInputField";
 
 const Login = () => {
   const [passwordVisible, setPasswordVisible] = useState(false);
@@ -50,37 +52,14 @@ const Login = () => {
                   <h2 className="fw-bold mb-2 text-uppercase">Login</h2>
                   <p className="text-dark-50 mb-5 ">Please enter your email and password!</p>
                   <form noValidate onSubmit={handleSubmit(onSubmit)}>
-                    <div className="mb-4">
-                      <label className="form-label" htmlFor={id + "-username"}>
-                        Username
-                      </label>
-                      <input
-                        {...register("username", {
-                          required: "username is required!",
-                          minLength: { value: 5, message: "username must be at least 5 characters long!" },
-                        })}
-                        type="text"
-                        placeholder="Enter your username"
-                        id={id + "-username"}
-                        className="bg-transparent text-dark form-control form-control-md"
-                      />
-                      {errors.username ? (
-                        <span role="alert" className="text-danger">
-                          {errors.username.message}
-                        </span>
-                      ) : (
-                        <span>&nbsp;</span>
-                      )}
-                    </div>
+                    <CustomInputField id={id + "-username"} label="Username" name="username" validationSchema={validationSchema.username} register={register} errors={errors.username} placeholder="Enter your username" />
                     <div className="mb-4">
                       <label className="form-label" htmlFor={id + "-password"}>
                         Password
                       </label>
                       <div className="input-group">
                         <input
-                          {...register("password", {
-                            required: "password is required!",
-                          })}
+                          {...register("password", validationSchema.password)} // Use the validation schema here
                           type={passwordVisible ? "text" : "password"}
                           placeholder="Enter your password"
                           id={id + "-password"}
@@ -140,9 +119,4 @@ const Login = () => {
 
 export default Login;
 
-// pattern: {
-//   value: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/gm,
-//   message: `- at least 8 characters\n
-//             - must contain at least 1 uppercase letter, 1 lowercase letter, and 1 number\n
-//             - Can contain special characters`,
-// },
+

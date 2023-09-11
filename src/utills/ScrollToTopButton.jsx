@@ -31,7 +31,7 @@ const ScrollToTopButton = () => {
 
   return (
     <button className={`${isVisible ? "d-block" : "d-none"}  text-dark d-flex justify-content-center align-items-center border-0 rounded rounded-circle`} style={{ width: "50px", height: "50px", zIndex: "1000", position: "fixed", bottom: "5%", right: "3%", backgroundColor: "#a8eb12" }} onClick={scrollToTop} title="Scroll to Top">
-      <i class="bi bi-arrow-up-circle-fill" style={{ fontSize: "30px" }}></i>
+      <i className="bi bi-arrow-up-circle-fill" style={{ fontSize: "30px" }}></i>
     </button>
   );
 };
